@@ -1,0 +1,59 @@
+@charset "ISO-8859-1";
+
+header{
+	height: 20%; 
+	width:100%;
+	color: #f2f2f2;
+	background-color: #008080;
+}
+
+body{
+	height:80%;
+	width: 100%;
+}
+
+#activities{
+	color: #008080;
+	height: 50%;
+	margin: 20px;
+}
+#registerForm{
+	color: #008080;
+	height: 50%;
+	margin: 20px;
+}
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #008080;
+}
+input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #008080;
+}
+#button{
+	margin: 20px;
+	background-color: #008080; 
+  	border: none;
+  	padding: 16px 32px;
+  	text-align: center;
+  	display: inline-block;
+  	font-size: 16px;
+  	margin: 4px 2px;
+  	transition-duration: 0.4s;
+  	cursor: pointer;
+	background-color: white; 
+  	color: #008080; 
+  	border: 2px solid #4CAF50;	
+}
+#button:hover {
+  background-color: #008080;
+  color: white;
+}
