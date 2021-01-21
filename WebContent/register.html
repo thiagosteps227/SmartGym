@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register | SmartGym</title>
+</head>
+<header>
+	<h1>Register | SmartGym</h1>
+	<link rel="stylesheet" href="registerStyles.css">
+</header>
+<body>
+	<div id="activities">
+		 <form>
+			  <input type="checkbox" name="activity1" value="fitnessForKids">
+			  <label for="activity1"> Fitness for kids</label><br>
+			  <input type="checkbox" name="activity2" value="zumba">
+			  <label for="activity2"> Zumba</label><br>
+			  <input type="checkbox" name="activity3" value="spinning">
+			  <label for="activity3"> Spinning</label><br>
+			  <input type="checkbox" name="activity4" value="aerobics">
+			  <label for="activity4"> Aerobics</label><br>
+			  <input type="checkbox" name="activity5" value="over60">
+			  <label for="activity5"> Fitness  for the over 60s</label>
+		 </form> 
+	</div>
+	<div id="registerForm">
+		<form action="/action_page.php">
+		  <label for="fname">First name:</label><br>
+		  <input type="text" name="firstName" placeholder="Type your first name..."><br>
+		  <label for="lname">Last name:</label><br>
+		  <input type="text" name="lastName" placeholder="Type your last name..."><br>
+		  <label for="lname">Email address:</label><br>
+		  <input type="email" name="email" placeholder="Type your email..."><br><br>
+		  <input id="button" type="submit" value="Register">
+		  
+		</form> 
+	</div>
+</body>
+</html>
