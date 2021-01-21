@@ -21,6 +21,7 @@ body{
 	color: #008080;
 	height: 50%;
 	margin: 20px;
+	width:50%;
 }
 input[type=text] {
   width: 100%;
@@ -31,6 +32,14 @@ input[type=text] {
   border-bottom: 2px solid #008080;
 }
 input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #008080;
+}
+input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
