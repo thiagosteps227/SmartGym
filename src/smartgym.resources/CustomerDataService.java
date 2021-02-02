@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 public class CustomerDataService {
-	
     private List<Customer> customerList = new ArrayList<>();
 
     private static CustomerDataService ourInstance = new CustomerDataService();
@@ -21,11 +20,16 @@ public class CustomerDataService {
         return newId;
     }
 
-    public String addCustomer(String firstName,String lastName,String email, String password, String phoneNumber,
-   		 String gender, Date dateOfBirth, String newId)  {
-    	
-        Customer customer = new Customer(firstName, lastName, email, password, phoneNumber, gender, dateOfBirth, newId) ;
-        
+    public String addCustomer(String firstName, String lastName, String email, String password, String phonenumber,
+    		String gender, String dateOfBirth ) {
+        Customer customer = new Customer();
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setEmail(email);
+        customer.setPassword(password);
+        customer.setPhoneNumber(phonenumber);
+        customer.setGender(gender);
+        customer.setDateOfBirth(dateOfBirth);
         return addCustomer(customer);
     }
 
