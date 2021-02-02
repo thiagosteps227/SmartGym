@@ -9,8 +9,9 @@
 	<header>
 		<h1>Register | SmartGym</h1>
 	</header>
+<section>
 	<div id="activities">
-		 <form action="/customer" method="post">
+		 <form action="SmartGym/registration" method="post">
 			  <input type="checkbox" name="activity1" value="fitnessForKids">
 			  <label for="activity1"> Fitness for kids</label><br>
 			  <input type="checkbox" name="activity2" value="zumba">
@@ -24,7 +25,7 @@
 		 </form> 
 	</div>
 	<div id="registerForm">
-		<form action="/customer" method="post">
+		<form action="/customers" method="post">
 		  <label for="fname">First name:</label><br>
 		  <input type="text" name="firstName" placeholder="Type your first name..."><br>
 		  <label for="lname">Last name:</label><br>
@@ -34,15 +35,20 @@
 		  <label for="password">Password with 6 digits:</label><br>
 		  <input type="password" name="password" placeholder="*******"><br>
 		  <label for="phone">Phone:</label><br>
-		  <input type="text" name="phone" placeholder="+(XXX) XXXXXXXXX"><br>
+		  <input type="text" name="phoneNumber" placeholder="+(XXX) XXXXXXXXX"><br>
 		  <label for="gender">Gender:</label><br>
 		  <input type="text" name="gender" placeholder="Male or Female"><br>
 		  <label for="dateOfBirth">Date of Birth:</label><br>
 		  <input type="text" name="dateOfbirth" placeholder="XX/XX/XXXX"><br><br>
-		  <input id="button" type="submit" value="Register">
 		  
-		</form> 
+		  <input id="button" type="submit" value="Register">
+		 </form> 
 	</div>
+	<form action="/SmartGym" type="get">
+		<input id="button" type="submit" value="Go back">
+	</form>
+</section>
+
 <footer>
 </footer>
 </body>
