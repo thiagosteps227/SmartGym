@@ -12,22 +12,13 @@ public class Customer {
 	private String password;
 	private String phoneNumber;
 	private String gender;
-	private Date dateOfBirth;
-	private String newId;
-	
-	public Customer(String firstName,String lastName,String email, String password,String phoneNumber,
-		 String gender, Date dateOfBirth, String newId) {
-		this.firstName=firstName;
-		this.lastName=lastName;
-		this.email=email;
-		this.password=password;
-		this.phoneNumber=phoneNumber;
-		this.gender= gender;
-		this.dateOfBirth= dateOfBirth;
-		this.newId = newId;
+	private String dateOfBirth;
+	private String id;
+
+	public Customer() {
 		
 	}
-
+	
 	/**
 	 * @return the firstName
 	 */
@@ -115,24 +106,23 @@ public class Customer {
 	/**
 	 * @return the dateOfBirth
 	 */
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
 	/**
 	 * @param dateOfBirth the dateOfBirth to set
 	 */
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
-	public void setId(String newId) {
-		this.newId = newId;
-		
+	
+	public void setId(String id) {
+		this.id = id;
 	}
-
+	
 	public String getId() {
-		return newId;
+		return id;
 	}
 	
 }
