@@ -72,6 +72,69 @@ public class TimetableDAO {
     	}
     	return list;
     }
+	
+	public Timetable create(Timetable timetable) {
+    	Connection c= null;
+    	java.sql.PreparedStatement ps = null;
+    	try {
+    		c = ConnectionHelper.getConnection();
+    		ps = c.prepareStatement("INSERT INTO timetable "
+    				+ "(classCode, className, instructor, weekDay, classTime)"
+    				+ "VALUES(?,?,?,?,?)");
+    		ps.setInt(1, timetable.getClassCode());
+    		ps.setString(2, timetable.getClassName());
+    		ps.setString(3, timetable.getInstructor());
+    		ps.setString(4, timetable.getWeekDay());
+    		ps.setString(5, timetable.getClassTime());
+    		ps.executeUpdate();
+    		
+    	} catch (Exception e){
+    		e.printStackTrace();
+    		throw new RuntimeException(e);
+    	} finally {
+    		ConnectionHelper.close(c);
+    	}
+    	
+    	return timetable;
+    }
+	
+	public Timetable update(Timetable timetable) {
+    	Connection c = null;
+    	try {
+    		c = ConnectionHelper.getConnection();
+    		PreparedStatement ps = (PreparedStatement) c.prepareStatement
+    				("UPDATE timetable SET className=?, instructor=?,"
+    				+ "weekDay=?, classtime=? WHERE classCode=?");
+    		ps.setString(1, timetable.getClassName());
+    		ps.setString(2, timetable.getInstructor());
+    		ps.setString(3, timetable.getWeekDay());
+    		ps.setString(4, timetable.getClassTime());
+    		ps.setInt(5, timetable.getClassCode());
+    		ps.executeUpdate();
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    		throw new RuntimeException (e);
+    	} finally {
+    		ConnectionHelper.close(c);
+    	}
+    	return timetable;
+    }
+	
+	public boolean remove(int classCode) {
+    	Connection c= null;
+    	try {
+    		c = ConnectionHelper.getConnection();
+    		PreparedStatement ps = (PreparedStatement) c.prepareStatement("DELETE FROM timetable WHERE classCode =?");
+    		ps.setInt(1, classCode);
+    		int count = ps.executeUpdate();
+			return count == 1;
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		throw new RuntimeException (e);
+    	} finally {
+    		ConnectionHelper.close(c);
+    	}
+    }
 
    protected Timetable processRow(ResultSet rs) throws SQLException {
         Timetable timetable = new Timetable();
