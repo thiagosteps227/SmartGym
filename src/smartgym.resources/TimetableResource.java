@@ -13,9 +13,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.ait.validation.ErrorMessage;
+import com.ait.validation.TimetableValidationException;
+import com.ait.validation.TimetableValidator;
+
 @Path("/timetable")
 public class TimetableResource {
 	
+	TimetableValidator validator = new TimetableValidator();
 	TimetableDAO timetableDAO =  new TimetableDAO();
 	
 	@GET
@@ -45,8 +50,18 @@ public class TimetableResource {
 	@Produces({MediaType.APPLICATION_JSON})
 	//http://localhost:8080/SmartGym/rest/timetable
 	public Response create(Timetable timetable) {
-		Timetable timetableObj = timetableDAO.create(timetable);
-		return Response.status(201).entity(timetableObj).build();
+			Response response;
+			try {
+				List<Timetable> list = timetableDAO.findAll();
+				validator.validateTimetable(timetable);
+				timetableDAO.create(timetable);
+				response = Response.status(200).entity(timetable).build();
+				
+			} catch (TimetableValidationException e) {
+				ErrorMessage errorMessage = new ErrorMessage(e.getMessage());
+				response = Response.status(403).entity(errorMessage).build();
+			}
+			return response;
 	}
 	
 	@PUT @Path("{classCode}")
