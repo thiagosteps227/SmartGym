@@ -14,7 +14,7 @@ public class TimetableDAO {
 	public List<Timetable> findAll() {
         List<Timetable> list = new ArrayList<Timetable>();
         Connection c = null;
-    	String sql = "SELECT * FROM timetable ORDER BY classID";
+    	String sql = "SELECT * FROM timetable ORDER BY classCode";
         try {
             c = ConnectionHelper.getConnection();
             Statement s = c.createStatement();
