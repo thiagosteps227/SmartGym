@@ -3,18 +3,19 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome do SmartGym</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/main.js"></script>
 </head>
 <body>
-<header>
-	<h1>SmartGym</h1>
-	<h2>...your smartest option!</h2>
-</header>
-<section>
-	<div id="timetable">
-	
+	<header>
+		<h1>SmartGym</h1>
+		<h2>...your smartest option!</h2>
+	</header>
+	<div id="classtable">
 		<h2>Check out our classes available</h2>
-		<table>
+		<ul id="classtable"></ul>
+		<!--<table>
 		  <tr>
 		    <th>Activity</th>
 		    <th>Limit</th>
@@ -51,11 +52,11 @@
 		    <td>5</td>
 		    <td>60</td>
 		  </tr>
-		</table>
+		</table>-->
 		
 	</div>
-	<div id="buttons">
-		<form action="register.html" method="get">
+	<div id="register">
+		<form action="/register.html">
 		 <input class="buttons" type="submit" value="Register"> 
 		</form>
 		<form>
@@ -65,7 +66,6 @@
 		 <input class="buttons" type="button" onclick="alert('Hello World!')" value="Contact us">
 		</form>
 	</div>
-</section>
 <footer>
 </footer>
 </body>
