@@ -8,7 +8,7 @@ let findAll = function() {
 
 function renderList(classtable) {
 	$.each(classtable, function(index, classtable){
-		$('#classtable').append('<li><a href="#" '+ classtable.classID+'">'+classtable.className+'</a>'+" Euro per Class:  "+classtable.pricePerClass+'</li>');
+		$('#classtable').append('<tr><td>'+classtable.className+'</td><td>'+classtable.personLimit+'</td><td>'+classtable.pricePerClass+'</td><td>'+classtable.priceTwelveWeeks+'</td></tr>' );
 	});	
 }
 
