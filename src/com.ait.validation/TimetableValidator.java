@@ -2,7 +2,8 @@ package com.ait.validation;
 
 import java.util.Arrays;
 import java.util.List;
-import com.ait.smartgym.Timetable;
+
+import smartgym.model.Timetable;
 
 
 public class TimetableValidator {
