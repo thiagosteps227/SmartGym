@@ -11,13 +11,13 @@ public class Customer {
 	private String lastName;
 	private String email;
 	private String password;
-	private long phoneNumber;
-	private char gender;
-	private Date dateOfBirth;
+	private String phoneNumber;
+	private String gender;
+	private String dateOfBirth;
 	private String userName;
 	
-	public Customer(String firstName,String lastName,String email, String password,long phoneNumber,
-		 char gender, Date dateOfBirth,String userName) {
+	public Customer(String firstName,String lastName,String email, String password, String phoneNumber,
+		 String gender, String dateOfBirth,String userName) {
 		this.firstName=firstName;
 		this.lastName=lastName;
 		this.email=email;
@@ -80,28 +80,28 @@ public class Customer {
 		this.password = password;
 	}
 
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
 
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 }
