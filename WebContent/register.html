@@ -3,7 +3,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register | SmartGym</title>
-<link rel="stylesheet" href="registerStyles.css">
+<link rel="stylesheet" href="css/registerStyles.css">
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/register.js"></script>
 </head>
 <body>
 	<header>
@@ -25,24 +27,26 @@
 		 </form> 
 	</div>
 	<div id="registerForm">
-		<form action="/customers" method="post">
+	
+		  <label for="username">Choose a Username:</label><br>
+		  <input type="text" id="userName" placeholder="Username"><br>
 		  <label for="fname">First name:</label><br>
-		  <input type="text" name="firstName" placeholder="Type your first name..."><br>
+		  <input type="text" id="firstName" placeholder="Type your first name..."><br>
 		  <label for="lname">Last name:</label><br>
-		  <input type="text" name="lastName" placeholder="Type your last name..."><br>
+		  <input type="text" id="lastName" placeholder="Type your last name..."><br>
 		  <label for="email">Email address:</label><br>
-		  <input type="email" name="email" placeholder="Type your email..."><br>
+		  <input type="email" id="email" placeholder="Type your email..."><br>
 		  <label for="password">Password with 6 digits:</label><br>
-		  <input type="password" name="password" placeholder="*******"><br>
+		  <input type="password" id="password" placeholder="*******"><br>
 		  <label for="phone">Phone:</label><br>
-		  <input type="text" name="phoneNumber" placeholder="+(XXX) XXXXXXXXX"><br>
+		  <input type="text" id="phoneNumber" placeholder="+(XXX) XXXXXXXXX"><br>
 		  <label for="gender">Gender:</label><br>
-		  <input type="text" name="gender" placeholder="Male or Female"><br>
+		  <input type="text" id="gender" placeholder="Male or Female"><br>
 		  <label for="dateOfBirth">Date of Birth:</label><br>
-		  <input type="text" name="dateOfbirth" placeholder="XX/XX/XXXX"><br><br>
+		  <input type="text" id="dateOfBirth" placeholder="XX/XX/XXXX"><br><br>
 		  
-		  <input id="button" type="submit" value="Register">
-		 </form> 
+		  <button id="registerButton">Register</button>
+	
 	</div>
 	<form action="/SmartGym" type="get">
 		<input id="button" type="submit" value="Go back">
