@@ -20,18 +20,15 @@ public class CustomerDao {
 		int rows;
 		try {
 			c = ConnectionHelper.getConnection();
-			ps = c.prepareStatement("INSERT INTO Customer ( userName,firstName, lastName,   password, phoneNumber,"
+			ps = c.prepareStatement("INSERT INTO Customer ( userName,firstName, lastName, password, phoneNumber,"
 					+ "gender,  dateOfBirth ,email) VALUES (?, ?,?,?,?,?,?,?)");
 			ps.setString(1, customer.getUserName());
 			ps.setString(2, customer.getFirstName());
 			ps.setString(3, customer.getLastName());
 			ps.setString(4, customer.getPassword());
-			ps.setLong(5, customer.getPhoneNumber());
+			ps.setString(5, customer.getPhoneNumber());
 			ps.setString(6, "" + customer.getGender());
-			java.util.Date dob= customer.getDateOfBirth();
-		    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-	        String mysqlDateString = formatter.format(dob);
-			ps.setDate(7, new java.sql.Date( formatter.parse( mysqlDateString ).getTime() ));
+			ps.setString(7, customer.getDateOfBirth());
 			ps.setString(8, customer.getEmail());
 			rows = ps.executeUpdate();
 		} catch (Exception e) {
@@ -60,10 +57,10 @@ public class CustomerDao {
 				customer.setLastName(rs.getString("lastName"));
 				
 				customer.setPassword(rs.getString("password"));
-				customer.setPhoneNumber(Long.parseLong(rs.getString("phoneNumber")));
+				customer.setPhoneNumber(rs.getString("phoneNumber"));
 				customer.setEmail(rs.getString("email"));
-				customer.setGender((rs.getString("gender").charAt(0)));
-				customer.setDateOfBirth((rs.getDate("dateOfBirth")));
+				customer.setGender(rs.getString("gender"));
+				customer.setDateOfBirth(rs.getString("dateOfBirth"));
 				//customer.setDateOfBirth((rs.getString("dateOfBirth")));
 				list.add(customer);
 			}
