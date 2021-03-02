@@ -21,15 +21,16 @@ public class CustomerDao {
 		try {
 			c = ConnectionHelper.getConnection();
 			ps = c.prepareStatement("INSERT INTO Customer ( userName,firstName, lastName, password, phoneNumber,"
-					+ "gender,  dateOfBirth ,email) VALUES (?, ?,?,?,?,?,?,?)");
+					+ "gender,  dateOfBirth ,email, activity) VALUES (?, ?,?,?,?,?,?,?, ?)");
 			ps.setString(1, customer.getUserName());
 			ps.setString(2, customer.getFirstName());
 			ps.setString(3, customer.getLastName());
 			ps.setString(4, customer.getPassword());
 			ps.setString(5, customer.getPhoneNumber());
-			ps.setString(6, "" + customer.getGender());
+			ps.setString(6, customer.getGender());
 			ps.setString(7, customer.getDateOfBirth());
 			ps.setString(8, customer.getEmail());
+			ps.setString(9, customer.getActivity());
 			rows = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,7 +62,7 @@ public class CustomerDao {
 				customer.setEmail(rs.getString("email"));
 				customer.setGender(rs.getString("gender"));
 				customer.setDateOfBirth(rs.getString("dateOfBirth"));
-				//customer.setDateOfBirth((rs.getString("dateOfBirth")));
+				customer.setActivity("activity");
 				list.add(customer);
 			}
 
