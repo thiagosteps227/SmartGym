@@ -15,9 +15,10 @@ public class Customer {
 	private String gender;
 	private String dateOfBirth;
 	private String userName;
+	private String activity;
 	
 	public Customer(String firstName,String lastName,String email, String password, String phoneNumber,
-		 String gender, String dateOfBirth,String userName) {
+		 String gender, String dateOfBirth,String userName, String activity) {
 		this.firstName=firstName;
 		this.lastName=lastName;
 		this.email=email;
@@ -26,6 +27,7 @@ public class Customer {
 		this.gender=gender;
 		this.dateOfBirth= dateOfBirth;
 		this.userName=userName;
+		this.activity = activity;
 		
 	}
 	
@@ -103,5 +105,13 @@ public class Customer {
 
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	
+	public String getActivity() {
+		return activity;
+	}
+	
+	public void setActivity(String activity) {
+		this.activity = activity;
 	}
 }
