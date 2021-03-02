@@ -20,7 +20,8 @@ var formToJSON = function (){
 			"phoneNumber" : $('#phoneNumber').val(),
 			"gender" : $('#gender').val(),
 			"dateOfBirth" : $('#dateOfBirth').val(),
-			"email" : $('#email').val()
+			"email" : $('#email').val(),
+			"activity" : $("input[type='checkbox']:checked").val()
 	});
 }
 
