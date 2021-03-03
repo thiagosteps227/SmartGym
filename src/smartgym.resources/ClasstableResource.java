@@ -1,4 +1,4 @@
-package com.ait.smartgym;
+package smartgym.resources;
 
 import java.util.List;
 
@@ -13,6 +13,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import smartgym.dao.ClasstableDAO;
+import smartgym.model.Classtable;
+
 @Path("/classtable")
 public class ClasstableResource {
 	
@@ -20,9 +23,9 @@ public class ClasstableResource {
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_ATOM_XML})
-	public List<Classtable> findAll(){
-		System.out.println("findAll");
-		return dao.findAll();
+	public Response  findAll(){
+		List<Classtable> list = dao.findAll();
+		return Response.status(200).entity(list).build();
 	}
 	
 	@GET @Path("{classID}")
