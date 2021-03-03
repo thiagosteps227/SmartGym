@@ -1,0 +1,39 @@
+package smartgym.tests;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.List;
+import com.mysql.jdbc.PreparedStatement;
+import smartgym.dao.ConnectionHelper;
+import smartgym.model.Classtable;
+
+public class ResetTable {
+
+	public void resetTable(List<Classtable> classes) throws Exception {
+		String driver = null;
+		Connection c = null;
+		Statement statement = null;
+		PreparedStatement ps = null;
+		String url;
+		try {
+			c = ConnectionHelper.getConnection();
+            Statement s = c.createStatement();
+			String query = "TRUNCATE TABLE classtable";
+			s.execute(query);
+			for (Classtable classTable : classes) {
+
+				ps = (PreparedStatement) c.prepareStatement("INSERT INTO classtable (className,personLimit,pricePerClass,"
+						+ "priceTwelveWeeks) VALUES (?,?,?,?)",
+						new String[] { "classID" });
+				ps.setString(1, classTable.getClassName());
+				ps.setInt(2, classTable.getPersonLimit());
+				ps.setInt(3, classTable.getPricePerClass());
+				ps.setInt(4, classTable.getPriceTwelveWeeks());
+				ps.executeUpdate();
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+}
