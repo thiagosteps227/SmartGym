@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Staff | SmartGym</title>
+<link rel="stylesheet" href="css/registerStyles.css">
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/staff.js"></script>
+</head>
+<body>
+<header>
+<h1>Staff | SmartGym</h1>
+</header>
+<section>
+<div class="topnav">
+  		<a id="home" class="active" href="/SmartGym">Home</a>
+  		<a id="timetablePage" href="/SmartGym/rest/timetable">Time table</a>
+  		<a id="registerPage" href="/SmartGym/register.html">Register</a>
+  		<a id="staffPage" href="/SmartGym/staff.html">Staff</a>
+  		<a id="aboutPage" href="/SmartGym/about.html">About</a>
+</div>
+<div id="customerDiv">
+	<table id="customerTable">
+	<thead>
+	<tr><th>Username</th><th>User</th><th>Email</th><tr>
+	</table>
+</div>
+<div id="deleteDiv">
+	<label for="username">Type customer ID to be deleted:</label><br>
+	<input type="text" id="customerID" placeholder="Customer ID"><br>
+</div>
+<button class="buttons" id="showCustomersButton">Clients</button>
+<button class="buttons" id="deleteCustomer">Delete a Customer</button>
+</section>
+
+</body>
+</html>
