@@ -1,5 +1,7 @@
 var customerURL = "http://localhost:8080/SmartGym/rest/customer/createCustomer";
 
+
+//method to add a customer when the button register is pressed
 var addCustomer = function(){
 	$.ajax({type: 'POST', 
 		contentType: 'application/json',
@@ -10,6 +12,8 @@ var addCustomer = function(){
 			alert("Customer registered");
 		}});
 };
+
+
 
 var formToJSON = function (){
 	return JSON.stringify({
@@ -26,8 +30,13 @@ var formToJSON = function (){
 }
 
 $(document).ready(function(){
-	
 	$('#registerButton').click(function() {
 		addCustomer();
 	});
+	$('div[id="customerDiv"]').hide();
+	$('.topnav a').removeClass('active');
+    $('#registerPage').addClass('active');
+    //button that show customers and change the other buttons behaviour
+	$('#showCustomersButton').click(showAllCustomers)
+	
 });
