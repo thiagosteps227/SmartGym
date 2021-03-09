@@ -10,8 +10,23 @@
 <body>
 	<header>
 		<h1>Register | SmartGym</h1>
+		<h2>...your smartest option!</h2>
 	</header>
 <section>
+	<div class="topnav">
+  		<a id="home" class="active" href="/SmartGym">Home</a>
+  		<a id="timetablePage" href="/SmartGym/rest/timetable">Time table</a>
+  		<a id="registerPage" href="/SmartGym/register.html">Register</a>
+  		<a id="staffPage" href="/SmartGym/staff.html">Staff</a>
+  		<a id="aboutPage" href="/SmartGym/about.html">About</a>
+	</div>
+	<div id="customerDiv">
+		<table id="customerTable">
+		<thead>
+		<tr><th>Username</th><th>User</th><th>Email</th><tr>
+		</table>
+	</div>
+		
 	<div id="registerForm">
 		 
 		<input type="checkbox" class="activities" value="fitnessForKids">
@@ -23,32 +38,29 @@
 		<input type="checkbox" class="activities"value="aerobics">
 		<label for="activity4"> Aerobics</label><br>
 		<input type="checkbox" class="activities" value="over60">
-		 <label for="activity5"> Fitness  for the over 60s</label><br><br>
+		<label for="activity5"> Fitness  for the over 60s</label><br><br>
 		  
 	
-		  <label for="username">Choose a Username:</label><br>
-		  <input type="text" id="userName" placeholder="Username"><br>
-		  <label for="fname">First name:</label><br>
-		  <input type="text" id="firstName" placeholder="Type your first name..."><br>
-		  <label for="lname">Last name:</label><br>
-		  <input type="text" id="lastName" placeholder="Type your last name..."><br>
-		  <label for="email">Email address:</label><br>
-		  <input type="email" id="email" placeholder="Type your email..."><br>
-		  <label for="password">Password with 6 digits:</label><br>
-		  <input type="password" id="password" placeholder="*******"><br>
-		  <label for="phone">Phone:</label><br>
-		  <input type="text" id="phoneNumber" placeholder="+(XXX) XXXXXXXXX"><br>
-		  <label for="gender">Gender:</label><br>
-		  <input type="text" id="gender" placeholder="Male or Female"><br>
-		  <label for="dateOfBirth">Date of Birth:</label><br>
-		  <input type="text" id="dateOfBirth" placeholder="XX/XX/XXXX"><br><br>
-		  
-		  <button id="registerButton">Register</button>
-	
+		 <label for="username">Choose a Username:</label><br>
+		 <input type="text" id="userName" placeholder="Username"><br>
+		 <label for="fname">First name:</label><br>
+		 <input type="text" id="firstName" placeholder="Type your first name..."><br>
+		 <label for="lname">Last name:</label><br>
+		 <input type="text" id="lastName" placeholder="Type your last name..."><br>
+		 <label for="email">Email address:</label><br>
+		 <input type="email" id="email" placeholder="Type your email..."><br>
+		 <label for="password">Password with 6 digits:</label><br>
+		 <input type="password" id="password" placeholder="*******"><br>
+		 <label for="phone">Phone:</label><br>
+		 <input type="text" id="phoneNumber" placeholder="+(XXX) XXXXXXXXX"><br>
+		 <label for="gender">Gender:</label><br>
+		 <input type="text" id="gender" placeholder="Male or Female"><br>
+		 <label for="dateOfBirth">Date of Birth:</label><br>
+		 <input type="text" id="dateOfBirth" placeholder="XX/XX/XXXX"><br><br>
 	</div>
-	<form action="/SmartGym" type="get">
-		<input id="button" type="submit" value="Go back">
-	</form>
+	<button class="buttons" id="registerButton">Register</button>
+	
+	
 </section>
 
 <footer>
