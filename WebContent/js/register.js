@@ -29,14 +29,35 @@ var formToJSON = function (){
 	});
 }
 
+//to check empty inputs
+var validateForm = function() {
+
+	  var formInvalid = false;
+	  $('#registerForm input').each(function() {
+	    if ($(this).val() === '') {
+	      formInvalid = true;
+	    }
+	  });
+
+	 // if (formInvalid)
+	 //   alert('One or Two fields are empty. Please fill up all fields');
+	  return formInvalid;
+	}
+
 $(document).ready(function(){
 	$('#registerButton').click(function() {
-		addCustomer();
+		if(validateForm()=== true){
+			alert('One or Two fields are empty. Please fill up all fields');
+		} else {
+			addCustomer();
+		}
+		
+		
 	});
 	$('div[id="customerDiv"]').hide();
+	
+	//to make the navbar white when you are in the register page
 	$('.topnav a').removeClass('active');
     $('#registerPage').addClass('active');
-    //button that show customers and change the other buttons behaviour
-	$('#showCustomersButton').click(showAllCustomers)
-	
+
 });
