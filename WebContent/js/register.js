@@ -38,9 +38,7 @@ var validateForm = function() {
 	      formInvalid = true;
 	    }
 	  });
-
-	 // if (formInvalid)
-	 //   alert('One or Two fields are empty. Please fill up all fields');
+	
 	  return formInvalid;
 	}
 
