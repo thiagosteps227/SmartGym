@@ -9,12 +9,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import smartgym.dao.CustomerDao;
 import smartgym.model.Classtable;
 import smartgym.model.Customer;
-
 
 
 @Path("/customer")
@@ -44,6 +44,16 @@ public class GymResources {
 		Customer customer = dao.findById(customerID);
 		return Response.status(200).entity(customer).build();
 	}
+	
+	@GET @Path("/query")
+	@Produces({MediaType.APPLICATION_JSON})
+	//http://localhost:8080/SmartGym/rest/customer/query
+	public Response findByUsernameAndEmail(
+			@QueryParam("userName") String userName,
+			@QueryParam("email") String email){
+		List<Customer> list = dao.findByUsernameAndEmail(userName, email);
+		return Response.status(200).entity(list).build();
+		}
 	
 	@PUT @Path("{customerID}")
 	@Consumes({MediaType.APPLICATION_JSON})
