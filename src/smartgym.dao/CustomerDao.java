@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import smartgym.model.Classtable;
 import smartgym.model.Customer;
 
@@ -99,6 +98,30 @@ public class CustomerDao {
 	    	}
 	    	return customer;
 	    }
+	 
+	 public List<Customer> findByUsernameAndEmail(String userName, String email){
+	    	List<Customer> list = new ArrayList<Customer>();
+	    	Connection c= null;
+	    	String sql = "SELECT * FROM customer AS e WHERE UPPER(userName) LIKE ? AND UPPER(email) LIKE ? "
+	    			+ "ORDER BY userName";
+	    	try {
+	    		c = ConnectionHelper.getConnection();
+	    		PreparedStatement ps = (PreparedStatement) c.prepareStatement(sql);
+	    		ps.setString(1, "%"+userName.toUpperCase()+"%");
+	    		ps.setString(2, "%"+email.toUpperCase()+"%");
+	    		ResultSet rs = ps.executeQuery();
+	    		while(rs.next()) {
+	    			list.add(processRow(rs));
+	    		}
+	    	} catch (SQLException e) {
+	    		e.printStackTrace();
+	    		throw new RuntimeException(e);
+	    	} finally {
+	    	ConnectionHelper.close(c);
+	    	}
+	    	return list;
+	    }
+	 
 	public String retrievePassword(String userName) {
 		String pwd = null;
 		Connection c = null;
