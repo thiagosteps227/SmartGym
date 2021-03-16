@@ -14,11 +14,11 @@
 </header>
 <section>
 	<div class="topnav">
-	  		<a id="home" class="active" href="/SmartGym">Home</a>
-	  		<a id="timetablePage" href="/SmartGym/rest/timetable">Time table</a>
-	  		<a id="registerPage" href="/SmartGym/register.html">Register</a>
-	  		<a id="staffPage" href="/SmartGym/staff.html">Staff</a>
-	  		<a id="aboutPage" href="/SmartGym/about.html">About</a>
+	  	<a id="home" class="active" href="/SmartGym">Home</a>
+  		<a id="timetablePage" href="/SmartGym/timetable.html">Time table</a>
+  		<a id="registerPage" href="/SmartGym/register.html">Register</a>
+  		<a id="staffPage" href="/SmartGym/staff.html">Staff</a>
+  		<a id="aboutPage" href="/SmartGym/about.html">About</a>
 	</div>
 	<div id="customerDiv">
 		<table id="customerTable">
@@ -32,6 +32,8 @@
 	</div>
 	<div id="buttons">
 		<button class="buttons" id="showClientsButton">Clients</button><br>
+		<button class="buttons" id="showClassesButton">Classes</button><br>
+		<button class="buttons" id="showTimetableButton">Time table</button><br>
 		<button class="buttons" id="deleteCustomer">Delete a Customer</button><br>
 		<button class="buttons" id="showCustomerDetailsButton">Show Customer details</button><br>
 		<button class="buttons" id="updateCustomer">Update Customer</button>
@@ -55,6 +57,52 @@
 		<label for="dateOfBirth">Date of Birth:</label>
 		<input type="text" id="dateOfBirth" ><br><br>
 	</div>
+	<div id="classtableDiv">
+		<h2>Classes:</h2>
+		
+		<table id="classtable">
+		<thead>
+		<tr><th>Class ID</th><th>Class Name</th><th>Limit of People</th><th>Price per Class</th><th>Price in 12 Weeks</th><tr>
+		</table>
+	</div>
+	<div id="updateClassForm">
+		<label for="classID">Class ID:</label>
+		<input type="text" id="classID" ><br>
+		<label for="className">Class name:</label>
+		<input type="text" id="className" ><br>
+		<label for="personLimit">Limit of people:</label>
+		<input type="text" id="personLimit" ><br>
+		<label for="pricePerClas">Price per Class:</label>
+		<input type="text" id="pricePerClass" ><br>
+		<label for="priceTwelveWeeks">Price in Twelve weeks:</label>
+		<input type="text" id="priceTwelveWeeks" ><br>
+		<button class="buttons" id="createClass">Create</button>
+		<button class="buttons" id="deleteClass">Delete</button>
+		<button class="buttons" id="updateClass">Update</button>
+	</div>
+	<div id="timetableDiv">
+		<h2>Timetable</h2>
+		<table id="timetable">
+		<thead>
+		<tr><th>Classcode</th><th>Class</th><th>Instructor</th><th>Weekday</th><th>Time</th><tr>
+		</table>
+	</div>
+	<div id="updateTimetableForm">
+		<label for="classCode">Class Code:</label>
+		<input type="text" id="classCode" ><br>
+		<label for="TTclassName">Class name:</label>
+		<input type="text" id="TTclassName" ><br>
+		<label for="instructor">Instructor:</label>
+		<input type="text" id="instructor" ><br>
+		<label for="weekDay">Week day:</label>
+		<input type="text" id="weekDay" ><br>
+		<label for="classTime">Class time:</label>
+		<input type="text" id="classTime" ><br>
+		<button class="buttons" id="createTimetable">Create</button>
+		<button class="buttons" id="deleteTimetable">Delete</button>
+		<button class="buttons" id="updateTimetable">Update</button>
+	</div>
+
 </section>
 </body>
 </html>
