@@ -47,13 +47,7 @@ section{
   color: #008080;
 }
 
-#customerTable { 
-	float: center;
-	width:80%;
-	height: 50%;
-	margin:10px;
-	color:#008080;
-}
+
 table {
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
@@ -156,4 +150,37 @@ input[type=password] {
 #button:hover {
   background-color: #008080;
   color: white;
+}
+#customerTable { 
+	float: center;
+	width:80%;
+	height: 50%;
+	margin:10px;
+	color:#008080;
+}
+#classtableDiv { 
+	float: center;
+	width:100%;
+	height: 50%;
+	margin:20px;
+	color:#008080;
+}
+#updateClassForm{
+	color: #008080;
+	height: 50%;
+	margin: 20px;
+	width:50%;
+}
+#timetableDiv { 
+	float: center;
+	width:80%;
+	height: 50%;
+	margin:20px;
+	color:#008080;
+}
+#updateTimetableForm{
+	color: #008080;
+	height: 50%;
+	margin: 20px;
+	width:50%;
 }
