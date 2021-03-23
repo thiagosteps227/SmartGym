@@ -19,17 +19,21 @@ import com.mysql.jdbc.PreparedStatement;
 import smartgym.dao.ClasstableDAO;
 import smartgym.dao.ConnectionHelper;
 import smartgym.model.Classtable;
+import smartgym.model.Timetable;
 import smartgym.resources.ClasstableResource;
+import smartgym.resources.TimetableResource;
 
 class IntegrationTest {
 
 	ClasstableResource classtableResource;
 	Classtable classTable;
 	
-	
+	Timetable timeTable;
+	TimetableResource timetableResource;	
 
 	@BeforeEach
 	void setUp() throws Exception {
+		//for classtable
 		classtableResource = new ClasstableResource();
 		ResetTable reset = new ResetTable();
 		List<Classtable> classes = new ArrayList<Classtable>();
@@ -47,6 +51,26 @@ class IntegrationTest {
 		classes.add(classTable);
 		reset.resetTable(classes);
 		
+		//for timetable
+		timetableResource = new TimetableResource();
+		ResetTable resetTt = new ResetTable();
+		List<Timetable> timetables = new ArrayList<Timetable>();
+		timeTable = new Timetable();
+		timeTable.setClassCode(9999);
+		timeTable.setClassName("test");
+		timeTable.setInstructor("David Black");
+		timeTable.setWeekDay("Saturday");
+		timeTable.setClassTime("12:00");
+		timetables.add(timeTable);
+		timeTable = new Timetable();
+		timeTable.setClassCode(0000);
+		timeTable.setClassName("test2");
+		timeTable.setInstructor("Audrey Clark");
+		timeTable.setWeekDay("Sunday");
+		timeTable.setClassTime("10:00");
+		timetables.add(timeTable);
+		resetTt.resetTimeTable(timetables);
+		
 	}
 	
 	@Test
@@ -62,6 +86,23 @@ class IntegrationTest {
 		assertEquals(20, classTable.getPersonLimit());
 		assertEquals(200, classTable.getPricePerClass());
 		assertEquals(2400, classTable.getPriceTwelveWeeks());
+		
+
+	}
+	
+	@Test
+	void testGetAllTimetable() {
+		Response response= timetableResource.findAll();
+		List<Timetable> list =  (List<Timetable>) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals(2, list.size());
+		Timetable timeTable= list.get(0);
+		assertEquals("test2", timeTable.getClassName());
+		timeTable = list.get(1);
+		assertEquals("test", timeTable.getClassName());
+		assertEquals("David Black", timeTable.getInstructor());
+		assertEquals("Saturday", timeTable.getWeekDay());
+		assertEquals("12:00", timeTable.getClassTime());
 		
 
 	}
@@ -82,12 +123,10 @@ class IntegrationTest {
 		class1.setPricePerClass(5);
 		class1.setPriceTwelveWeeks(60);
 		
-		
 		class2.setClassName("Zumba");
 		class2.setPersonLimit(30);
 		class2.setPricePerClass(10);
 		class2.setPriceTwelveWeeks(120);
-		
 		
 		class3.setClassName("Spinning");
 		class3.setPersonLimit(30);
@@ -103,7 +142,6 @@ class IntegrationTest {
 		class4.setPersonLimit(20);
 		class4.setPricePerClass(5);
 		class4.setPriceTwelveWeeks(60);
-		
 		
 		dao.create(class1);
 		dao.create(class2);
