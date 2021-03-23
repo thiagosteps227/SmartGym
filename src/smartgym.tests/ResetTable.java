@@ -6,6 +6,7 @@ import java.util.List;
 import com.mysql.jdbc.PreparedStatement;
 import smartgym.dao.ConnectionHelper;
 import smartgym.model.Classtable;
+import smartgym.model.Timetable;
 
 public class ResetTable {
 
@@ -36,4 +37,33 @@ public class ResetTable {
 		}
 
 	}
+	
+	public void resetTimeTable(List<Timetable> timetables) throws Exception {
+		String driver = null;
+		Connection c = null;
+		Statement statement = null;
+		PreparedStatement ps = null;
+		String url;
+		try {
+			c = ConnectionHelper.getConnection();
+            Statement s = c.createStatement();
+			String query = "TRUNCATE TABLE timetable";
+			s.execute(query);
+			for (Timetable timeTable : timetables) {
+
+				ps = (PreparedStatement) c.prepareStatement("INSERT INTO timetable (classCode,className, instructor,weekDay,"
+						+ "classTime) VALUES (?,?,?,?,?)");
+				ps.setInt(1, timeTable.getClassCode());
+				ps.setString(2, timeTable.getClassName());
+				ps.setString(3, timeTable.getInstructor());
+				ps.setString(4, timeTable.getWeekDay());
+				ps.setString(5, timeTable.getClassTime());
+				ps.executeUpdate();
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+	
 }
