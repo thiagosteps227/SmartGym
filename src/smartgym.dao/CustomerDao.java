@@ -63,7 +63,7 @@ public class CustomerDao {
 				customer.setEmail(rs.getString("email"));
 				customer.setGender(rs.getString("gender"));
 				customer.setDateOfBirth(rs.getString("dateOfBirth"));
-				customer.setActivity("activity");
+				customer.setActivity(rs.getString("activity"));
 				list.add(customer);
 			}
 
