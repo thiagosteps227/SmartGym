@@ -19,8 +19,10 @@ import com.mysql.jdbc.PreparedStatement;
 import smartgym.dao.ClasstableDAO;
 import smartgym.dao.ConnectionHelper;
 import smartgym.model.Classtable;
+import smartgym.model.Customer;
 import smartgym.model.Timetable;
 import smartgym.resources.ClasstableResource;
+import smartgym.resources.GymResources;
 import smartgym.resources.TimetableResource;
 
 class IntegrationTest {
@@ -30,6 +32,9 @@ class IntegrationTest {
 	
 	Timetable timeTable;
 	TimetableResource timetableResource;	
+	
+	Customer customer;
+	GymResources customerResource;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -71,6 +76,35 @@ class IntegrationTest {
 		timetables.add(timeTable);
 		resetTt.resetTimeTable(timetables);
 		
+		//for customer
+		customerResource = new GymResources();
+		ResetTable resetCustomer = new ResetTable();
+		List<Customer> customers = new ArrayList<Customer>();
+		customer = new Customer();
+		customer.setFirstName("test");
+		customer.setLastName("testLast");
+		customer.setEmail("test@test.com");
+		customer.setPassword("1234");
+		customer.setPhoneNumber("56789");
+		customer.setGender("female");
+		customer.setDateOfBirth("1234");
+		customer.setUserName("56789");
+		customer.setActivity("activitytest");
+		
+		customers.add(customer);
+		customer = new Customer();
+		customer.setFirstName("test2");
+		customer.setLastName("testLast2");
+		customer.setEmail("test2@test.com");
+		customer.setPassword("12342");
+		customer.setPhoneNumber("567892");
+		customer.setGender("female");
+		customer.setDateOfBirth("1234");
+		customer.setUserName("567892");
+		customer.setActivity("activitytest2");
+		customers.add(customer);
+		resetCustomer.resetCustomers(customers);
+		
 	}
 	
 	@Test
@@ -91,6 +125,62 @@ class IntegrationTest {
 	}
 	
 	@Test
+	void testCreateClasses() {
+		classTable = new Classtable();
+		classTable.setClassName("test3");
+		classTable.setPersonLimit(33);
+		classTable.setPricePerClass(333);
+		classTable.setPriceTwelveWeeks(3333);
+		Response response = classtableResource.create(classTable);
+		assertEquals(HttpStatus.SC_CREATED, response.getStatus());
+		assertEquals("test3", classTable.getClassName());
+		response = (Response) classtableResource.findAll();
+		List<Classtable> list = (List<Classtable>) response.getEntity();
+		assertEquals(3, list.size());
+
+	}
+	
+	@Test
+	void testFindClassesById() {
+		Response response = classtableResource.findById(1);
+		Classtable classTable = (Classtable) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals(1, classTable.getClassID());
+
+	}
+	
+	@Test
+	void testFindClassesName() {
+		Response response = classtableResource.findByName("test");
+		List<Classtable> list = (List<Classtable>) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals("test", list.get(0).getClassName());
+
+	}
+	
+	@Test
+	void testUpdateClasses() {
+		classTable.setClassName("UPDATEDname");
+		Response response = classtableResource.update(classTable);
+		Classtable updatedClass = (Classtable) response.getEntity();
+		assertEquals(HttpStatus.SC_CREATED, response.getStatus());
+		assertEquals("UPDATEDname", classTable.getClassName());
+
+	}
+	@Test
+	void testDeleteClasses() {
+		classTable = new Classtable();
+		classTable.setClassName("test3");
+		classTable.setPersonLimit(33);
+		classTable.setPricePerClass(333);
+		classTable.setPriceTwelveWeeks(3333);
+		classtableResource.create(classTable);
+		Response response = classtableResource.remove(2);
+		assertEquals(HttpStatus.SC_NO_CONTENT, response.getStatus());
+
+	}
+	
+	@Test
 	void testGetAllTimetable() {
 		Response response= timetableResource.findAll();
 		List<Timetable> list =  (List<Timetable>) response.getEntity();
@@ -103,6 +193,27 @@ class IntegrationTest {
 		assertEquals("David Black", timeTable.getInstructor());
 		assertEquals("Saturday", timeTable.getWeekDay());
 		assertEquals("12:00", timeTable.getClassTime());
+		
+
+	}
+	
+	@Test
+	void testGetAllCustomers() {
+		Response response= customerResource.findAll();
+		List<Customer> list =  (List<Customer>) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals(2, list.size());
+		Customer customer= list.get(0);
+		assertEquals("test", customer.getFirstName());
+		assertEquals("activitytest", customer.getActivity());
+		customer = list.get(1);
+		assertEquals("testLast2", customer.getLastName());
+		assertEquals("12342", customer.getPassword());
+		assertEquals("567892", customer.getPhoneNumber());
+		assertEquals("female", customer.getGender());
+		assertEquals("1234", customer.getDateOfBirth());
+		assertEquals("test2@test.com", customer.getEmail());
+		assertEquals("activitytest2", customer.getActivity());
 		
 
 	}
