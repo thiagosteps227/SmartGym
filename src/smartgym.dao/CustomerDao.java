@@ -15,14 +15,15 @@ import smartgym.model.Customer;
 
 
 public class CustomerDao {
-	public int create(Customer customer) {
+	public Customer create(Customer customer) {
 		Connection c = null;
-		PreparedStatement ps = null;
+		java.sql.PreparedStatement ps = null;
 		int rows;
 		try {
 			c = ConnectionHelper.getConnection();
 			ps = c.prepareStatement("INSERT INTO Customer ( userName,firstName, lastName, password, phoneNumber,"
-					+ "gender,  dateOfBirth ,email, activity) VALUES (?, ?,?,?,?,?,?,?, ?)");
+					+ "gender,  dateOfBirth ,email, activity) VALUES (?, ?,?,?,?,?,?,?, ?)",
+					new String[] {"customerID"});
 			ps.setString(1, customer.getUserName());
 			ps.setString(2, customer.getFirstName());
 			ps.setString(3, customer.getLastName());
@@ -32,14 +33,18 @@ public class CustomerDao {
 			ps.setString(7, customer.getDateOfBirth());
 			ps.setString(8, customer.getEmail());
 			ps.setString(9, customer.getActivity());
-			rows = ps.executeUpdate();
+			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+    		rs.next();
+    		int customerID = rs.getInt(1);
+    		customer.setCustomerID(customerID);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
 			ConnectionHelper.close(c);
 		}
-		return rows;
+		return customer;
 	}
 
 	public List<Customer> findAllCustomers() {
