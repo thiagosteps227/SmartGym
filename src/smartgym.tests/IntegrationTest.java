@@ -88,7 +88,7 @@ class IntegrationTest {
 		customer.setPhoneNumber("56789");
 		customer.setGender("female");
 		customer.setDateOfBirth("1234");
-		customer.setUserName("56789");
+		customer.setUserName("username");
 		customer.setActivity("activitytest");
 		
 		customers.add(customer);
@@ -100,7 +100,7 @@ class IntegrationTest {
 		customer.setPhoneNumber("567892");
 		customer.setGender("female");
 		customer.setDateOfBirth("1234");
-		customer.setUserName("567892");
+		customer.setUserName("username2");
 		customer.setActivity("activitytest2");
 		customers.add(customer);
 		resetCustomer.resetCustomers(customers);
@@ -198,6 +198,65 @@ class IntegrationTest {
 	}
 	
 	@Test
+	void testCreateTimetable(){
+		timeTable = new Timetable();
+		timeTable.setClassCode(5555);
+		timeTable.setClassName("classtest");
+		timeTable.setInstructor("Audrey Clark");
+		timeTable.setWeekDay("Monday");
+		timeTable.setClassTime("00:00");
+		Response response = timetableResource.create(timeTable);
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals("classtest", timeTable.getClassName());
+		response = (Response) timetableResource.findAll();
+		List<Timetable> list = (List<Timetable>) response.getEntity();
+		assertEquals(3, list.size());
+
+	}
+	
+	@Test
+	void testFindTimetableByClassCode() {
+		Response response = timetableResource.findById(9999);
+		Timetable timeTable = (Timetable) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals(9999, timeTable.getClassCode());
+
+	}
+	
+	@Test
+	void testFindTimetableByName() {
+		Response response = timetableResource.findByName("test");
+		List<Timetable> list = (List<Timetable>) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals("test", list.get(0).getClassName());
+
+	}
+	
+	@Test
+	void testUpdateTimetable() {
+		timeTable.setClassName("UPDATEDname");
+		Response response = timetableResource.update(timeTable);
+		Timetable updatedClass = (Timetable) response.getEntity();
+		assertEquals(HttpStatus.SC_CREATED, response.getStatus());
+		assertEquals("UPDATEDname", timeTable.getClassName());
+
+	}
+	
+	@Test
+	void testDeleteTimetable() {
+		timeTable = new Timetable();
+		timeTable.setClassCode(5555);
+		timeTable.setClassName("classtest");
+		timeTable.setInstructor("Audrey Clark");
+		timeTable.setWeekDay("Monday");
+		timeTable.setClassTime("00:00");
+		timetableResource.create(timeTable);
+		Response response = timetableResource.remove(5555);
+		assertEquals(HttpStatus.SC_NO_CONTENT, response.getStatus());
+
+	}
+	
+	@Test
 	void testGetAllCustomers() {
 		Response response= customerResource.findAll();
 		List<Customer> list =  (List<Customer>) response.getEntity();
@@ -211,10 +270,78 @@ class IntegrationTest {
 		assertEquals("12342", customer.getPassword());
 		assertEquals("567892", customer.getPhoneNumber());
 		assertEquals("female", customer.getGender());
+		assertEquals("username2", customer.getUserName());
 		assertEquals("1234", customer.getDateOfBirth());
 		assertEquals("test2@test.com", customer.getEmail());
 		assertEquals("activitytest2", customer.getActivity());
 		
+	}
+	
+	@Test
+	void testCreateCustomers() {
+		customer = new Customer();
+		customer.setFirstName("test3");
+		customer.setLastName("testLast3");
+		customer.setEmail("test3@test.com");
+		customer.setPassword("12343");
+		customer.setPhoneNumber("567893");
+		customer.setGender("female3");
+		customer.setDateOfBirth("12343");
+		customer.setUserName("567893");
+		customer.setActivity("activitytest3");
+		Response response = customerResource.create(customer);
+		assertEquals(HttpStatus.SC_CREATED, response.getStatus());
+		assertEquals("test3", customer.getFirstName());
+		response = (Response) customerResource.findAll();
+		List<Classtable> list = (List<Classtable>) response.getEntity();
+		assertEquals(3, list.size());
+
+	}
+	
+	@Test
+	void testFindCustomerById() {
+		Response response = customerResource.findById(1);
+		Customer customer = (Customer) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals(1, customer.getCustomerID());
+
+	}
+	
+	@Test
+	void testFindByUserNameAndEmail() {
+		Response response = customerResource.findByUsernameAndEmail("username2","test2@test.com");
+		List<Customer> list = (List<Customer>) response.getEntity();
+		assertEquals(HttpStatus.SC_OK, response.getStatus());
+		assertEquals("username2", list.get(0).getUserName());
+		assertEquals("test2@test.com", list.get(0).getEmail());
+
+	}
+	
+	@Test
+	void testUpdateCustomer() {
+		customer.setUserName("UPDATEDusername");
+		Response response = customerResource.update(customer);
+		Customer updatedCustomer = (Customer) response.getEntity();
+		assertEquals(HttpStatus.SC_CREATED, response.getStatus());
+		assertEquals("UPDATEDusername", customer.getUserName());
+
+	}
+	
+	@Test
+	void testDeleteCustomer() {
+		customer = new Customer();
+		customer.setFirstName("test3");
+		customer.setLastName("testLast3");
+		customer.setEmail("test3@test.com");
+		customer.setPassword("12343");
+		customer.setPhoneNumber("567893");
+		customer.setGender("female3");
+		customer.setDateOfBirth("12343");
+		customer.setUserName("567893");
+		customer.setActivity("activitytest3");
+		customerResource.create(customer);
+		Response response = customerResource.remove(3);
+		assertEquals(HttpStatus.SC_NO_CONTENT, response.getStatus());
 
 	}
 	@AfterAll
