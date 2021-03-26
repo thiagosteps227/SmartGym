@@ -25,9 +25,9 @@ public class GymResources {
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/createCustomer")
-	public int create(Customer customer) {
-		int row = dao.create(customer);
-		return row;
+	public Response create(Customer customer) {
+		Customer customerObj = dao.create(customer);
+		return Response.status(201).entity(customerObj).build();
 	}
 
 	@GET
