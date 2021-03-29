@@ -1,0 +1,146 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+
+header{ 
+	height: 20%; 
+	width:100%;
+	color: white;
+	background-color:#008080;
+}
+h1{
+	height:100%;
+}
+body{
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+
+.topnav a {
+  float: left;
+  color: #008080;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color:#008080;
+  color: white;
+}
+
+.topbar {
+	position: absolute;
+	left: 10px;
+	top: 130px;
+	padding-top: 5px;
+}
+
+.leftArea {
+	position: absolute;
+	left: 10px;
+	top: 190px;
+	bottom: 20px;
+	width: 300px;
+	border:solid 1px #dddddd;
+	overflow-y: scroll;
+}
+
+.mainArea {
+	position: absolute;
+	top: 190px;
+	bottom: 20px;
+	left:350px;
+	overflow-y: scroll;
+	width:400px;
+}
+
+.rightArea {
+	position: absolute;
+	top: 70px;
+	bottom: 20px;
+	left:650px;
+	overflow-y: scroll;
+	width:270px;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0px;
+	margin-top: 0px;
+}
+
+li a { 
+	text-decoration:none;
+	display: block;
+	color: #000000;
+	border-bottom:solid 1px #CCCCCC;
+	padding: 8px;
+}
+
+li a:hover {
+	background-color: #008080;
+	color: white;
+}
+
+input, textarea {
+  border:1px solid #ccc;
+  min-height:30px;
+  outline: none;
+}
+
+.mainArea input {
+  margin-bottom:15px;
+  margin-top:5px;
+  width:280px;
+}
+
+textarea {
+	margin-bottom:15px;
+  	margin-top:5px;
+	height: 200px;
+  	width:250px;
+}
+
+label {
+	display:block;
+}
+
+button {
+	padding:6px;
+}
+
+
+#searchName {
+	width:300px;
+}
+
+#btnSearch:hover{
+	background-color: #008080;
+	color: white;
+}
+
+#btnNew:hover{
+	background-color: #008080;
+	color: white;
+}
+
+#btnUpdate:hover{
+	background-color: #008080;
+	color: white;
+}
+
+#btnDelete:hover{
+	background-color: #008080;
+	color: white;
+}
+
+#btnAdd:hover{
+	background-color: #008080;
+	color: white;
+}
