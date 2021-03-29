@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Management | SmartGym</title>
+<link rel="stylesheet" href="css/st.css" />
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/management.js"></script>
+</head>
+
+<body>
+<header>
+	<h1>Management | SmartGym</h1>
+	<h2>...your smartest option!</h2>
+</header>
+	<div class="topnav">
+	  	<a id="home" class="active" href="/SmartGym">Home</a>
+  		<a id="timetablePage" href="/SmartGym/timetable.html">Time table</a>
+  		<a id="registerPage" href="/SmartGym/register.html">Register</a>
+  		<a id="staffPage" href="/SmartGym/staff.html">Staff</a>
+  		<a id="mgtPage" href="/SmartGym/management.html">Management</a>
+  		<a id="aboutPage" href="/SmartGym/about.html">About</a>
+	</div>
+	<div class="topbar">
+		<input type="text" id="searchName" />
+		<button id="btnSearch">Search</button>
+		<button id="btnNew">New Class</button>
+	</div>
+	<div class="leftArea">
+		<ul id="classtable"></ul>
+	</div>
+
+	<form id="ClassForm">
+
+		<div class="mainArea">
+
+				<label>Class Id:</label> 
+				<input id="ClassId" name="id" type="text" disabled /> 
+				
+				<label for="className">Class name:</label> 
+				<input type="text" id="className">
+				
+				<label for="personLimit">Limit of people:</label> 
+				<input type="text" id="personLimit"> 
+				
+				<label for="pricePerClas">Price per Class:</label> 
+				<input type="text" id="pricePerClass"> 
+				
+				<label for="priceTwelveWeeks">Price	in Twelve weeks:</label> 
+				<input type="text" id="priceTwelveWeeks">
+				
+				<button id="btnUpdate">Update Class</button>
+                <button id="btnDelete">Delete Class</button>
+				<button id="btnAdd">Add Class</button>
+		</div>
+	</form>
+</body>
+</html>
