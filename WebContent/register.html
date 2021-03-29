@@ -15,9 +15,10 @@
 <section>
 	<div class="topnav">
   		<a id="home" class="active" href="/SmartGym">Home</a>
-  		<a id="timetablePage" href="/SmartGym/rest/timetable">Time table</a>
+  		<a id="timetablePage" href="/SmartGym/timetable.html">Time table</a>
   		<a id="registerPage" href="/SmartGym/register.html">Register</a>
   		<a id="staffPage" href="/SmartGym/staff.html">Staff</a>
+  		<a id="mgtPage" href="/SmartGym/management.html">Management</a>
   		<a id="aboutPage" href="/SmartGym/about.html">About</a>
 	</div>
 	<div id="customerDiv">
@@ -42,28 +43,24 @@
 		  
 	
 		 <label for="username">Choose a Username:</label><br>
-		 <input type="text" id="userName" placeholder="Username"><br>
+		 <input type="text" id="userName" name="userName" placeholder="Username"><br>
 		 <label for="fname">First name:</label><br>
-		 <input type="text" id="firstName" placeholder="Type your first name..."><br>
+		 <input type="text" id="firstName" name="firstName" placeholder="Type your first name..."><br>
 		 <label for="lname">Last name:</label><br>
-		 <input type="text" id="lastName" placeholder="Type your last name..."><br>
+		 <input type="text" id="lastName" name="lastName" placeholder="Type your last name..."><br>
 		 <label for="email">Email address:</label><br>
-		 <input type="email" id="email" placeholder="Type your email..."><br>
+		 <input type="email" id="email" name="email" placeholder="Type your email..."><br>
 		 <label for="password">Password with 6 digits:</label><br>
-		 <input type="password" id="password" placeholder="*******"><br>
+		 <input type="password" id="password" name="password" placeholder="*******"><br>
 		 <label for="phone">Phone:</label><br>
-		 <input type="text" id="phoneNumber" placeholder="+(XXX) XXXXXXXXX"><br>
+		 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="+(XXX) XXXXXXXXX"><br>
 		 <label for="gender">Gender:</label><br>
 		 <input type="text" id="gender" placeholder="Male or Female"><br>
 		 <label for="dateOfBirth">Date of Birth:</label><br>
-		 <input type="text" id="dateOfBirth" placeholder="XX/XX/XXXX"><br><br>
+		 <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="dd/mm/yyyy" required><br><br>
 	</div>
 	<button class="buttons" id="registerButton">Register</button>
-	
-	
 </section>
-
-<footer>
-</footer>
+<footer><footer>&copy; HDIP2018</footer>
 </body>
 </html>
